@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Handle navigation from main page to How to Play page
+    const howToPlayButton = document.getElementById('how-to-play');
+    if (howToPlayButton) {
+        howToPlayButton.addEventListener('click', () => {
+            window.location.href = 'how-to-play.html';
+        });
+    }
+
     // Handle navigation from level selection page to specific levels
     const levelButtons = {
         level1: 'level1.html',
@@ -51,16 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Handle finish button if needed
-    const finishButton = document.getElementById('finish');
-    if (finishButton) {
-        finishButton.addEventListener('click', () => {
-            window.location.href = 'index.html'; // Redirect to the main page or a completion page
-        });
-    }
-    
-
 });
+
 
 
 

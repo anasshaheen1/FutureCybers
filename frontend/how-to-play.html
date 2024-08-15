@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Play & Points System</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .back-arrow {
+            position: absolute;
+            bottom: 20px; 
+            left: 20px;   
+            font-size: 3.5em; 
+            background-color: transparent;
+            border: none;
+            color: yellow; 
+            cursor: pointer;
+            z-index: 10; 
+        }
+
+        .back-arrow:hover {
+            color: white; 
+        }
+
+        /* Align text to the left */
+        .container p, .container ol, .container table {
+            text-align: left;
+        }
+
+        /* Add margin after the welcome paragraph */
+        .container p.welcome-text {
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 2px solid yellow;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: navy;
+            color: white;
+        }
+
+        td {
+            background-color: #f2f2f2;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>How to Play</h1>
+            <p class="welcome-text">Welcome to FutureCybers! This game is designed to teach you important cybersecurity concepts through a series of challenges.</p>
+            <ol>
+                <li>Select a level and complete each challenge.</li>
+                <li>Read the instructions carefully before attempting each challenge.</li>
+                <li>You must complete each challenge to unlock the next one.</li>
+                <li>Use the "Hint" button if you need help, but try to solve the challenge on your own first.</li>
+                <li>Your progress will be saved, and you can return to completed challenges anytime.</li>
+            </ol>
+            <h2>Points System</h2>
+            <p>Earn points as you progress through the challenges:</p>
+            <table>
+                <tr>
+                    <th>Challenge Level</th>
+                    <th>Points Per Challenge</th>
+                </tr>
+                <tr>
+                    <td>Level 1 Challenges</td>
+                    <td>10 points each</td>
+                </tr>
+                <tr>
+                    <td>Level 2 Challenges</td>
+                    <td>50 points each</td>
+                </tr>
+                <tr>
+                    <td>Level 3 Challenges</td>
+                    <td>100 points each</td>
+                </tr>
+            </table>
+            <p>Your total score will be displayed at the top left corner of the game screen. Complete all challenges to achieve the highest score!</p>
+            <button class="back-arrow" onclick="location.href='index.html'">&#8592; </button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
