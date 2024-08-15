@@ -7,6 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
+    const challenge14Unlocked = localStorage.getItem('challenge13Complete');
+
+    if (!challenge14Unlocked) {
+        alert("You must complete Challenge 13 before accessing this challenge.");
+        window.location.href = 'challenge13.html'; // Redirect back to the previous challenge
+    }
 
     options.forEach(option => {
         option.addEventListener('click', () => {
@@ -16,6 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedOption === 'option2') {
                 resultElement.innerText = "Correct! Verifying the connection and checking for tampering is the safest action.";
                 resultElement.style.color = 'yellow';
+
+                // Mark the current challenge as complete in localStorage
+                localStorage.setItem('challenge14Complete', true);
+
                 nextChallengeButton.style.display = 'block';
                 popup.style.display = 'flex'; // Show the popup with explanation
             } else {

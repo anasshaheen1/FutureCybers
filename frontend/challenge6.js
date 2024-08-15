@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
 
     const hiddenFlag = 'FLAG{hidden_information_found}'; // The correct flag
+    const challenge6Unlocked = localStorage.getItem('challenge5Complete');
+
+    if (!challenge6Unlocked) {
+        alert("You must complete Challenge 5 before accessing this challenge.");
+        window.location.href = 'challenge5.html'; // Redirect back to the previous challenge
+    }
 
     // Handle flag submission
     submitFlagButton.addEventListener('click', () => {
@@ -18,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userFlag === hiddenFlag) {
             resultElement.innerText = "Correct! You've found the hidden information.";
             resultElement.style.color = 'yellow'; // Set the result text color to yellow
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge6Complete', true);
+
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

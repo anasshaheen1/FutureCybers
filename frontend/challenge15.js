@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
+    const challenge15Unlocked = localStorage.getItem('challenge14Complete');
+
+    if (!challenge15Unlocked) {
+        alert("You must complete Challenge 14 before accessing this challenge.");
+        window.location.href = 'challenge14.html'; // Redirect back to the previous challenge
+    }
 
     // Handle file upload submission
     submitFileButton.addEventListener('click', () => {

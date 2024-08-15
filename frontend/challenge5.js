@@ -11,6 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHintButton = document.getElementById('close-hint');
 
     const correctDecryption = 'There is a secret message'; // The decrypted message
+    const challenge5Unlocked = localStorage.getItem('challenge4Complete');
+
+    if (!challenge5Unlocked) {
+        alert("You must complete Challenge 4 before accessing this challenge.");
+        window.location.href = 'challenge4.html'; // Redirect back to the previous challenge
+    }
 
     // Handle decryption submission
     submitDecryptedButton.addEventListener('click', () => {
@@ -19,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userDecryption === correctDecryption) {
             resultElement.innerText = "Correct! You've decrypted the message.";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge5Complete', true);
+
             nextChallengeButton.style.display = 'block';
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
+    const challenge13Unlocked = localStorage.getItem('challenge12Complete');
+
+    if (!challenge13Unlocked) {
+        alert("You must complete Challenge 12 before accessing this challenge.");
+        window.location.href = 'challenge12.html'; // Redirect back to the previous challenge
+    }
 
     // Handle SQL form submission
     submitSQLButton.addEventListener('click', () => {
@@ -19,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (username === "admin" && password === "admin' OR '1'='1") {
             resultElement.innerText = "Correct! You've bypassed the login.";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge13Complete', true);
+
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

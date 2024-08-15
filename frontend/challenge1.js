@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userMessage === correctMessage) {
             resultElement.innerText = "Correct! You've completed the challenge.";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge1Complete', true);
+
             nextChallengeButton.style.display = 'block';
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

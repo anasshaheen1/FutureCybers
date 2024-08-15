@@ -8,6 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHintButton = document.getElementById('close-hint');
+    const challenge4Unlocked = localStorage.getItem('challenge3Complete');
+
+    if (!challenge4Unlocked) {
+        alert("You must complete Challenge 3 before accessing this challenge.");
+        window.location.href = 'challenge3.html'; // Redirect back to the previous challenge
+    }
+
 
     options.forEach(option => {
         option.addEventListener('click', () => {
@@ -17,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedOption === 'option4') {
                 resultElement.innerText = "Correct! Reporting the email is the safest action.";
                 resultElement.style.color = 'yellow';
+
+                // Mark the current challenge as complete in localStorage
+                localStorage.setItem('challenge4Complete', true);
+
                 nextChallengeButton.style.display = 'block';
                 popup.style.display = 'flex'; // Show the popup with explanation
             } else {

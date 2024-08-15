@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
+    const challenge7Unlocked = localStorage.getItem('challenge6Complete');
+
+    if (!challenge7Unlocked) {
+        alert("You must complete Challenge 6 before accessing this challenge.");
+        window.location.href = 'challenge6.html'; // Redirect back to the previous challenge
+    }
 
     // Handle HTML submission
     submitHTMLButton.addEventListener('click', () => {
@@ -19,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
             targetDiv.innerHTML = userHTML;
             resultElement.innerText = "HTML injected successfully!";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge7Complete', true);
+
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

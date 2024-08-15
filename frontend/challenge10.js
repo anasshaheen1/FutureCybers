@@ -13,6 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctPassword = '123456'; // The correct password to guess
     let attemptsRemaining = 5;
 
+    const challenge10Unlocked = localStorage.getItem('challenge9Complete');
+
+    if (!challenge10Unlocked) {
+        alert("You must complete Challenge 9 before accessing this challenge.");
+        window.location.href = 'challenge9.html'; // Redirect back to the previous challenge
+    }
+
     // Handle password submission
     submitPasswordButton.addEventListener('click', () => {
         const userPassword = passwordInput.value.trim();
@@ -20,6 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userPassword === correctPassword) {
             resultElement.innerText = "Correct password!";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge10Complete', true);
+
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

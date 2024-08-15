@@ -9,6 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
     const xssOutput = document.getElementById('xss-output'); // The div to output the script
+    const challenge8Unlocked = localStorage.getItem('challenge7Complete');
+
+    if (!challenge8Unlocked) {
+        alert("You must complete Challenge 7 before accessing this challenge.");
+        window.location.href = 'challenge7.html'; // Redirect back to the previous challenge
+    }
 
     // Clear the textarea on page load
     xssInput.value = '';
@@ -27,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 eval(scripts[0].innerHTML); // Execute the script within the div
                 resultElement.innerText = "Correct! You've executed the XSS payload.";
                 resultElement.style.color = 'yellow';
+
+                // Mark the current challenge as complete in localStorage
+                localStorage.setItem('challenge8Complete', true);
+
                 nextChallengeButton.style.display = 'block'; // Show the next challenge button
                 popup.style.display = 'flex'; // Show the popup with explanation
             } else {

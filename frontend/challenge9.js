@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
 
     const correctPassword = 'password'; // The password corresponding to the MD5 hash
+    const challenge9Unlocked = localStorage.getItem('challenge8Complete');
+
+    if (!challenge9Unlocked) {
+        alert("You must complete Challenge 8 before accessing this challenge.");
+        window.location.href = 'challenge8.html'; // Redirect back to the previous challenge
+    }
 
     // Handle password submission
     submitPasswordButton.addEventListener('click', () => {
@@ -18,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userPassword === correctPassword) {
             resultElement.innerText = "Correct! You've cracked the password.";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge9Complete', true);
+
             nextChallengeButton.style.display = 'block';
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const encryptedMessage = "WIVVSRWGRFLZLLH"; // Encrypted message
     const keyword = "KEY"; // Keyword for decryption
     const correctDecryption = decryptVigenere(encryptedMessage, keyword); // The correct decrypted message
+    const challenge11Unlocked = localStorage.getItem('challenge10Complete');
+
+    if (!challenge11Unlocked) {
+        alert("You must complete Challenge 10 before accessing this challenge.");
+        window.location.href = 'challenge10.html'; // Redirect back to the previous challenge
+    }
 
     function decryptVigenere(cipherText, keyword) {
         const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -42,6 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userDecryption === correctDecryption) {
             resultElement.innerText = "Correct! You've decrypted the message.";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge11Complete', true);
+
             nextChallengeButton.style.display = 'block';
             popup.style.display = 'flex'; // Show the popup with explanation
         } else {

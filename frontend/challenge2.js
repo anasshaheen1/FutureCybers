@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
+    const challenge2Unlocked = localStorage.getItem('challenge1Complete');
+
+    if (!challenge2Unlocked) {
+        alert("You must complete Challenge 1 before accessing this challenge.");
+        window.location.href = 'challenge1.html'; // Redirect back to the previous challenge
+    }
 
     // Handle response submission
     submitResponseButton.addEventListener('click', () => {
@@ -19,6 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (containsSuspiciousLinks && containsUrgentLanguage) {
             resultElement.innerText = "Correct!";
             resultElement.style.color = 'yellow';
+
+            // Mark the current challenge as complete in localStorage
+            localStorage.setItem('challenge2Complete', true);
+
             popup.style.display = 'flex'; // Show the popup with explanation
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
         } else {
