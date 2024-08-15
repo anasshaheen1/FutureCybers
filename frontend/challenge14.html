@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 14 - Man-in-the-Middle (MITM) Attack</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-wrapper {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            border: 20px solid yellow;
+            border-radius: 10px;
+            background-color: navy;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Back Arrow Button Styling */
+        .back-arrow {
+            position: absolute;
+            bottom: 20px;  /* Adjusted to be within the yellow border */
+            left: 20px;    /* Adjusted to be within the yellow border */
+            font-size: 3.5em;
+            background-color: transparent;
+            border: none;
+            color: yellow;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .back-arrow:hover {
+            color: white;
+        }
+
+        /* Hint Button Styling */
+        .hint-button {
+            position: absolute;
+            top: 20px;     /* Adjusted to be within the yellow border */
+            right: 20px;   /* Adjusted to be within the yellow border */
+            font-size: 1.5em;
+            background-color: yellow;
+            border: 2px solid navy;
+            border-radius: 8px;
+            color: navy;
+            cursor: pointer;
+            padding: 12px 24px;
+            z-index: 10;
+        }
+
+        .hint-button:hover {
+            background-color: white;
+            color: navy;
+        }
+
+        /* Hint Popup Styling */
+        #hint-popup {
+            display: none;
+            position: absolute;
+            top: 70px;   /* Positioned below the hint button */
+            right: 20px; /* Align with the hint button */
+            background: white;
+            padding: 20px;
+            border: 2px solid yellow;
+            border-radius: 5px;
+            max-width: 300px;
+            z-index: 1001;
+            color: black;
+        }
+
+        #hint-popup .close-hint {
+            cursor: pointer;
+            float: right;
+            font-size: 16px;
+            color: navy;
+        }
+
+        /* Popup Styling */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 500px;
+            color: #000000; /* Black text color */
+        }
+
+        .close-popup {
+            cursor: pointer;
+            float: right;
+            font-size: 20px;
+        }
+
+        #chat-window {
+            width: 100%;
+            max-width: 600px;
+            background-color: #f8f8f8;
+            border: 2px solid yellow;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .message span {
+            display: block;
+        }
+
+        .message .sender {
+            font-weight: bold;
+        }
+
+        .message .text {
+            margin-left: 10px;
+        }
+
+        .option {
+            margin-top: 15px;
+            background-color: navy;
+            color: white;
+            padding: 10px;
+            border: 2px solid yellow;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .option:hover {
+            background-color: yellow;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>Challenge 14: Man-in-the-Middle Attack</h1>
+            <p>Review the communication below. What signs indicate that a Man-in-the-Middle (MITM) attack is happening?</p>
+            <div id="chat-window">
+                <div class="message">
+                    <span class="sender">You:</span>
+                    <span class="text">Hey, I need to transfer $500 to your account. Can you confirm your bank details?</span>
+                </div>
+                <div class="message">
+                    <span class="sender">Friend:</span>
+                    <span class="text">Sure, my bank details are: Account Number: 123456789, Routing Number: 987654321</span>
+                </div>
+                <div class="message">
+                    <span class="sender">You:</span>
+                    <span class="text">Got it. Transfer complete.</span>
+                </div>
+                <div class="message">
+                    <span class="sender">Friend:</span>
+                    <span class="text">Wait, I didn't receive the money. What happened?</span>
+                </div>
+            </div>
+            <div id="options">
+                <div class="option" id="option1">Check the account number to ensure it's correct.</div>
+                <div class="option" id="option2">Verify the connection and check for any signs of tampering.</div>
+                <div class="option" id="option3">Re-send the money to the same account number.</div>
+                <div class="option" id="option4">Assume the friend is lying and ignore the message.</div>
+            </div>
+            <p id="result"></p>
+            <button id="next-challenge" class="hidden">Go to Next Challenge</button>
+
+            <!-- Back Arrow Button -->
+            <button class="back-arrow" onclick="location.href='level3.html'">&#8592;</button>
+
+            <!-- Hint Button -->
+            <button class="hint-button" id="hint-button">Hint</button>
+
+            <!-- Hint Popup -->
+            <div id="hint-popup">
+                <span class="close-hint" id="close-hint">&times;</span>
+                <h3>Hint</h3>
+                <p>Consider if the communication might have been intercepted or altered. MITM attacks often involve subtle changes in communication.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup for explanation -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span id="close-popup" class="close-popup">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You've correctly identified the signs of a potential Man-in-the-Middle attack.</p>
+            <h2>Man-in-the-Middle Attack Explained</h2>
+            <p>In a MITM attack, an attacker secretly intercepts and possibly alters communication between two parties. Always verify secure connections and be cautious of any unexpected changes in communication.</p>
+        </div>
+    </div>
+
+    <script src="challenge14.js"></script>
+</body>
+</html>
+

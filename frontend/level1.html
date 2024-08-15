@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - FutureCybers</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-wrapper {
+            position: relative; 
+            width: 80vw;
+            height: 80vh;
+            border: 20px solid yellow; /* Yellow edge */
+            border-radius: 10px;
+            background-color: navy;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .back-arrow {
+            position: absolute;
+            bottom: 20px; 
+            left: 20px;   
+            font-size: 3.5em; 
+            background-color: transparent;
+            border: none;
+            color: yellow; 
+            cursor: pointer;
+            z-index: 10; 
+        }
+
+        .back-arrow:hover {
+            color: white; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>Level 1</h1>
+            <div class="challenge-buttons">
+                <button id="challenge1">Challenge 1</button>
+                <button id="challenge2">Challenge 2</button>
+                <button id="challenge3">Challenge 3</button>
+                <button id="challenge4">Challenge 4</button>
+                <button id="challenge5">Challenge 5</button>
+            </div>
+            <button class="back-arrow" onclick="location.href='select-level.html'">&#8592;</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

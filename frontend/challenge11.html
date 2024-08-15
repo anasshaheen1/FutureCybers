@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 11 - Vigenère Cipher</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-wrapper {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    border: 20px solid yellow;
+    border-radius: 10px;
+    background-color: navy;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Back Arrow Button Styling */
+.back-arrow {
+    position: absolute;
+    bottom: 20px;  /* Adjusted to be within the yellow border */
+    left: 20px;    /* Adjusted to be within the yellow border */
+    font-size: 3.5em;
+    background-color: transparent;
+    border: none;
+    color: yellow;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.back-arrow:hover {
+    color: white;
+}
+
+/* Hint Button Styling */
+.hint-button {
+    position: absolute;
+    top: 20px;     /* Adjusted to be within the yellow border */
+    right: 20px;   /* Adjusted to be within the yellow border */
+    font-size: 1.5em;
+    background-color: yellow;
+    border: 2px solid navy;
+    border-radius: 8px;
+    color: navy;
+    cursor: pointer;
+    padding: 12px 24px;
+    z-index: 10;
+}
+
+.hint-button:hover {
+    background-color: white;
+    color: navy;
+}
+
+/* Hint Popup Styling */
+#hint-popup {
+    display: none;
+    position: absolute;
+    top: 70px;   /* Positioned below the hint button */
+    right: 20px; /* Align with the hint button */
+    background: white;
+    padding: 20px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    max-width: 300px;
+    z-index: 1001;
+    color: black;
+}
+
+#hint-popup .close-hint {
+    cursor: pointer;
+    float: right;
+    font-size: 16px;
+    color: navy;
+}
+
+/* Popup Styling */
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    color: #000000; /* Black text color */
+}
+
+.close-popup {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+}
+
+/* Adjusting the Text Box Styling */
+input[type="text"] {
+    width: 350px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    background-color: navy;
+    color: white;
+    outline: none;
+    text-align: center;
+}
+
+/* Encrypted Message Styling */
+.encrypted-message {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: black;
+}
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>Challenge 11: Vigenère Cipher</h1>
+            <p>Decrypt the following message using the Vigenère cipher with the keyword <strong>"KEY"</strong>:</p>
+            <div class="encrypted-message">
+                WIVVSRWGRFLZLLH
+            </div>
+            <input type="text" id="vigenere-input" placeholder="Enter the decrypted message here...">
+            <button id="submit-vigenere">Submit Decryption</button>
+            <p id="result"></p>
+            <button id="next-challenge" class="hidden">Go to Next Challenge</button>
+
+            <!-- Back Arrow Button -->
+            <button class="back-arrow" onclick="location.href='level3.html'">&#8592;</button>
+
+            <!-- Hint Button -->
+            <button class="hint-button" id="hint-button">Hint</button>
+
+            <!-- Hint Popup -->
+            <div id="hint-popup">
+                <span class="close-hint" id="close-hint">&times;</span>
+                <h3>Hint</h3>
+                <p>Use the keyword "KEY" and remember to shift each letter according to its corresponding letter in the keyword.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup for explanation -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span id="close-popup" class="close-popup">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You've successfully decrypted the message.</p>
+            <h2>Vigenère Cipher Explained</h2>
+            <p>The Vigenère cipher uses a keyword to encrypt and decrypt messages. Each letter of the keyword shifts the corresponding letter in the message by a number of positions based on its position in the alphabet.</p>
+            <p>This makes the Vigenère cipher stronger than a simple Caesar cipher by introducing more variability in the shifts.</p>
+        </div>
+    </div>
+
+    <script src="challenge11.js"></script>
+</body>
+</html>
+

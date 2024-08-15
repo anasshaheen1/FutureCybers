@@ -1,0 +1,216 @@
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Center the content with padding for the border */
+body {
+    background-color: navy;
+    color: white; /* Set default text color to white */
+    margin: 0; /* Reset default margin */
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for border */
+.container-wrapper {
+    position: relative;
+    width: 80vw; /* Adjust width as needed */
+    height: 80vh; /* Adjust height as needed */
+    border: 20px solid yellow; /* Yellow border */
+    border-radius: 10px; /* Optional: rounded corners for the border */
+    background-color: navy; /* Background color for the container */
+    box-sizing: border-box; /* Include border in element's width and height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container for content */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Style for headings */
+h1 {
+    font-size: 2.8em; /* Slightly larger text size */
+    margin-bottom: 35px; /* Increase space between heading and buttons */
+}
+
+/* Style for buttons */
+button {
+    background-color: white;
+    color: navy; /* Text color inside buttons */
+    border: 3px solid yellow; /* Thicker border */
+    border-radius: 12px; /* Larger border-radius for buttons */
+    padding: 20px 40px; /* Larger padding for buttons */
+    margin: 25px; /* Increased margin for more spacing */
+    font-size: 1.5em; /* Larger font size for buttons */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: yellow;
+    color: navy;
+}
+
+/* Layout for challenge buttons */
+.challenge-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns layout */
+    grid-template-rows: repeat(3, auto); /* Three rows layout */
+    gap: 30px; /* Adjusted gap between buttons */
+    align-items: center; /* Center buttons vertically */
+    justify-items: center; /* Center buttons horizontally */
+    width: 100%; /* Ensure grid takes full width of container */
+    max-width: 800px; /* Adjusted width for better spacing */
+}
+
+/* Style for the last button */
+.challenge-buttons button:nth-child(5) {
+    grid-column: span 2; /* Make the last button span two columns */
+    justify-self: center; /* Center the last button */
+}
+
+
+
+/* Specific styles for level selection page */
+.level-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level-buttons > button {
+    width: 300px; /* Wider buttons */
+    margin: 25px; /* Increased margin for spacing */
+    font-size: 1.5em; /* Larger font size for buttons */
+}
+
+/* Style for text area */
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    background-color: navy;
+    color: white;
+}
+
+/* Style for result message */
+#result {
+    font-size: 1.2em;
+    color: yellow;
+    margin-top: 20px;
+}
+
+/* Popup styles */
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+}
+
+.popup-content {
+    background-color: #ffffff; /* White background */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 600px; /* Maximum width */
+    color: black; /* Ensure text is visible */
+}
+
+.close-popup {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-popup:hover,
+.close-popup:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for navigation button */
+#next-challenge {
+    display: none; /* Hidden by default */
+    padding: 10px 20px;
+    background-color: yellow;
+    color: navy;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#next-challenge:hover {
+    background-color: lightyellow;
+    color: navy;
+}
+
+/* Responsive Design Enhancements */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+    
+    button {
+        padding: 15px 30px;
+        font-size: 1.2em;
+    }
+
+    textarea {
+        height: 80px;
+        font-size: 1em;
+    }
+    
+    .popup-content {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+
+    textarea {
+        height: 60px;
+    }
+
+    .popup-content {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
