@@ -9,7 +9,8 @@
         .container-wrapper {
             position: relative;
             width: 80vw;
-            height: 80vh;
+            height: auto;
+            min-height: 80vh;
             border: 20px solid yellow;
             border-radius: 10px;
             background-color: navy;
@@ -17,20 +18,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .container {
-            position: relative;
-            text-align: center;
             width: 100%;
             height: 100%;
+        }
+
+        /* Score Display Styling */
+        .score-display {
+            font-size: 1.5em;
+            color: yellow;
+            margin-bottom: 20px;
+            text-align: left;
         }
 
         /* Back Arrow Button Styling */
         .back-arrow {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
+            bottom: 20px;
+            left: 20px;
             font-size: 3.5em;
             background-color: transparent;
             border: none;
@@ -46,8 +56,8 @@
         /* Hint Button Styling */
         .hint-button {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 20px;
+            right: 20px;
             font-size: 1.5em;
             background-color: yellow;
             border: 2px solid navy;
@@ -63,25 +73,60 @@
             color: navy;
         }
 
-        /* Hint Popup Styling */
-        #hint-popup {
-            display: none;
-            position: absolute;
-            top: 50px;
-            right: 10px;
-            background: white;
-            padding: 20px;
+        /* Phishing Email Styling */
+        #phishing-email {
+            background-color: #f1f1f1;
             border: 2px solid yellow;
-            border-radius: 5px;
-            max-width: 300px;
-            z-index: 1001;
-            color: black;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            color: #333; /* Darker text color for better readability */
         }
 
-        #hint-popup .close-hint {
+        #phishing-email h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        #phishing-email p {
+            margin: 5px 0;
+        }
+
+        #phishing-email a {
+            color: #007bff; /* Darker blue for better visibility */
+            text-decoration: underline;
+        }
+
+        /* Textarea Styling */
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            font-size: 1em;
+            border: 2px solid yellow;
+            border-radius: 8px;
+            background-color: #fff;
+            color: #000;
+            margin-bottom: 20px;
+            resize: none;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: white;
+            color: navy;
+            border: 2px solid navy;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1.2em;
             cursor: pointer;
-            float: right;
-            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: yellow;
             color: navy;
         }
 
@@ -104,6 +149,8 @@
             border-radius: 5px;
             width: 80%;
             max-width: 500px;
+            color: #000;
+            text-align: left;
         }
 
         .close-popup {
@@ -116,18 +163,27 @@
             display: none;
         }
 
-        /* Adjusting the Text Box Styling */
-        textarea {
-            width: 80%;
-            height: 100px;
-            padding: 10px;
-            font-size: 1.2em;
+        /* Hint Popup Styling */
+        #hint-popup {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background: white;
+            padding: 20px;
             border: 2px solid yellow;
             border-radius: 8px;
-            background-color: navy;
-            color: white;
-            margin-bottom: 20px;
-            resize: none;
+            max-width: 300px;
+            z-index: 1001;
+            color: black;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #hint-popup .close-hint {
+            cursor: pointer;
+            float: right;
+            font-size: 16px;
+            color: navy;
         }
     </style>
 </head>
@@ -188,6 +244,8 @@
     <script src="challenge2.js"></script>
 </body>
 </html>
+
+
 
 
 
