@@ -171,6 +171,26 @@ textarea {
     color: navy;
 }
 
+/* Score Display Styling */
+.score-display {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5em;
+    color: yellow;
+    background-color: navy;
+    padding: 10px;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.disabled {
+    pointer-events: none; /* Prevent clicks */
+    opacity: 0.5; /* Dim the appearance to show it's disabled */
+}
+
+
 /* Responsive Design Enhancements */
 @media (max-width: 768px) {
     h1 {

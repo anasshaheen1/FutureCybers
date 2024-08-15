@@ -10,21 +10,53 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
     const challenge2Unlocked = localStorage.getItem('challenge1Complete');
 
+    // Check if score exists in localStorage, if not, set it to 0
+    if (!localStorage.getItem('score')) {
+        localStorage.setItem('score', 0);
+    }
+
+    // Display the current score
+    const scoreElement = document.getElementById('score');
+    if (scoreElement) {
+        scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
+    }
+
+
     if (!challenge2Unlocked) {
         alert("You must complete Challenge 1 before accessing this challenge.");
         window.location.href = 'challenge1.html'; // Redirect back to the previous challenge
     }
 
+    // Check if the challenge has already been completed
+    if (localStorage.getItem('challenge2Complete')) {
+        // If the challenge is already completed, display a message and show the next challenge button
+        resultElement.innerText = "You've already completed this challenge.";
+        resultElement.style.color = 'yellow';
+        nextChallengeButton.style.display = 'block';
+        popup.style.display = 'flex'; // Show the popup with explanation
+        submitResponseButton.disabled = true; // Disable the submit button
+    }
+    
     // Handle response submission
     submitResponseButton.addEventListener('click', () => {
         const userResponse = responseTextarea.value.trim().toLowerCase();
 
         const containsSuspiciousLinks = userResponse.includes("suspicious links") || userResponse.includes("suspicious link");
         const containsUrgentLanguage = userResponse.includes("urgent language") || userResponse.includes("urgent message");
-
+        
         if (containsSuspiciousLinks && containsUrgentLanguage) {
             resultElement.innerText = "Correct!";
             resultElement.style.color = 'yellow';
+
+            let score = parseInt(localStorage.getItem('score'));
+            score += 10; // Award 10 points for completing the challenge
+            localStorage.setItem('score', score);
+
+            // Update the score display
+            const scoreElement = document.getElementById('score');
+            if (scoreElement) {
+            scoreElement.innerText = `Score: ${score}`;
+            }
 
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge2Complete', true);

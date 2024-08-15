@@ -9,9 +9,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
     const challenge14Unlocked = localStorage.getItem('challenge13Complete');
 
+
+    // Check if score exists in localStorage, if not, set it to 0
+    if (!localStorage.getItem('score')) {
+        localStorage.setItem('score', 0);
+    }
+
+    // Display the current score
+    const scoreElement = document.getElementById('score');
+    if (scoreElement) {
+        scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
+    }
+
+
+
     if (!challenge14Unlocked) {
         alert("You must complete Challenge 13 before accessing this challenge.");
         window.location.href = 'challenge13.html'; // Redirect back to the previous challenge
+    }
+
+    // Check if the challenge has already been completed
+    if (localStorage.getItem('challenge14Complete')) {
+        // If the challenge is already completed, display a message and show the next challenge button
+        resultElement.innerText = "You've already completed this challenge.";
+        resultElement.style.color = 'yellow';
+        nextChallengeButton.style.display = 'block';
+        popup.style.display = 'flex'; // Show the popup with explanation
+
+        // Disable all option buttons by adding the 'disabled' class
+        options.forEach(option => {
+            option.classList.add('disabled');
+        });
     }
 
     options.forEach(option => {
@@ -22,6 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
             if (selectedOption === 'option2') {
                 resultElement.innerText = "Correct! Verifying the connection and checking for tampering is the safest action.";
                 resultElement.style.color = 'yellow';
+
+                let score = parseInt(localStorage.getItem('score'));
+                score += 100; // Award 10 points for completing the challenge
+                localStorage.setItem('score', score);
+    
+                // Update the score display
+                const scoreElement = document.getElementById('score');
+                if (scoreElement) {
+                scoreElement.innerText = `Score: ${score}`;
+                }
 
                 // Mark the current challenge as complete in localStorage
                 localStorage.setItem('challenge14Complete', true);

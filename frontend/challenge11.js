@@ -15,9 +15,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctDecryption = decryptVigenere(encryptedMessage, keyword); // The correct decrypted message
     const challenge11Unlocked = localStorage.getItem('challenge10Complete');
 
+
+    // Check if score exists in localStorage, if not, set it to 0
+    if (!localStorage.getItem('score')) {
+        localStorage.setItem('score', 0);
+    }
+
+    // Display the current score
+    const scoreElement = document.getElementById('score');
+    if (scoreElement) {
+        scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
+    }
+
+
+
     if (!challenge11Unlocked) {
         alert("You must complete Challenge 10 before accessing this challenge.");
         window.location.href = 'challenge10.html'; // Redirect back to the previous challenge
+    }
+
+    // Check if the challenge has already been completed
+    if (localStorage.getItem('challenge11Complete')) {
+        // If the challenge is already completed, display a message and show the next challenge button
+        resultElement.innerText = "You've already completed this challenge.";
+        resultElement.style.color = 'yellow';
+        nextChallengeButton.style.display = 'block';
+        popup.style.display = 'flex'; // Show the popup with explanation
+        submitVigenereButton.disabled = true; // Disable the submit button
     }
 
     function decryptVigenere(cipherText, keyword) {
@@ -48,6 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (userDecryption === correctDecryption) {
             resultElement.innerText = "Correct! You've decrypted the message.";
             resultElement.style.color = 'yellow';
+
+            let score = parseInt(localStorage.getItem('score'));
+            score += 100; // Award 10 points for completing the challenge
+            localStorage.setItem('score', score);
+
+            // Update the score display
+            const scoreElement = document.getElementById('score');
+            if (scoreElement) {
+            scoreElement.innerText = `Score: ${score}`;
+            }
 
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge11Complete', true);
