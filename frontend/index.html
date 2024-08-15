@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureCybers</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-wrapper {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            border: 20px solid yellow;
+            border-radius: 10px;
+            background-color: navy;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Style for the "View Badges" button */
+        #view-badges {
+            position: absolute;
+            bottom: 20px; /* Position at the bottom */
+            right: 20px;  /* Position at the right */
+            font-size: 1em; /* Smaller font size */
+            background-color: yellow;
+            border: 2px solid navy;
+            border-radius: 8px;
+            color: navy;
+            cursor: pointer;
+            padding: 8px 16px; /* Smaller padding */
+            z-index: 10;
+        }
+
+        #view-badges:hover {
+            background-color: white;
+            color: navy;
+        }
+
+        /* Style for the other buttons */
+        #how-to-play, #start-challenges {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: navy;
+            color: yellow;
+            border: 2px solid yellow;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #how-to-play:hover, #start-challenges:hover {
+            background-color: yellow;
+            color: navy;
+        }
+    </style>
 </head>
 <body>
     <div class="container-wrapper">
@@ -12,11 +70,13 @@
             <h1>Welcome to FutureCybers</h1>
             <button id="how-to-play">How to Play</button>
             <button id="start-challenges">Start Challenges</button>
+            <button id="view-badges">View Badges</button>
         </div>
     </div>
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 

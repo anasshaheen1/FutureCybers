@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const challenge10Unlocked = localStorage.getItem('challenge9Complete');
 
+    const badgePopup = document.getElementById('badge-popup');
+    const closeBadgePopup = document.getElementById('close-badge-popup');
 
     // Check if score exists in localStorage, if not, set it to 0
     if (!localStorage.getItem('score')) {
@@ -61,11 +63,17 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreElement.innerText = `Score: ${score}`;
             }
 
+            submitPasswordButton.disabled = true; // Disable the submit button
+
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge10Complete', true);
 
+            // Award the Silver Badge
+            localStorage.setItem('silverBadge', 'earned');
+
             nextChallengeButton.style.display = 'block'; // Show the next challenge button
             popup.style.display = 'flex'; // Show the popup with explanation
+
         } else {
             attemptsRemaining--;
             attemptsElement.innerText = `Attempts remaining: ${attemptsRemaining}`;
@@ -84,6 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle closing the main popup
     closePopup.addEventListener('click', () => {
         popup.style.display = 'none'; // Hide the popup
+
+        badgePopup.style.display = 'flex'; // Show the badge notification pop-up
     });
 
     // Handle the hint button click
@@ -94,6 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle closing the hint popup
     closeHint.addEventListener('click', () => {
         hintPopup.style.display = 'none'; // Hide the hint popup
+    });
+
+    // Handle closing the badge popup
+    closeBadgePopup.addEventListener('click', () => {
+        badgePopup.style.display = 'none'; // Hide the badge pop-up
     });
 
     // Handle the next challenge button

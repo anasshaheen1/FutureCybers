@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreElement.innerText = `Score: ${score}`;
             }
 
+            submitSQLButton.disabled = true; // Disable the submit button
+
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge13Complete', true);
 

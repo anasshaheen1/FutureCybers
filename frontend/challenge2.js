@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreElement.innerText = `Score: ${score}`;
             }
 
+            submitResponseButton.disabled = true; // Disable the submit button
+
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge2Complete', true);
 

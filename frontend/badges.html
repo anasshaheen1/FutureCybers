@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Badges</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container-wrapper {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            border: 20px solid yellow;
+            border-radius: 10px;
+            background-color: navy;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Arrange badges vertically */
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Badge Styles */
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .badge {
+            font-size: 2em;
+            margin: 0 10px;
+            padding: 10px;
+            border: 2px solid yellow;
+            border-radius: 8px;
+            background-color: navy;
+            color: yellow;
+            display: none; /* Start hidden */
+        }
+
+        .visible {
+            display: inline-block; /* Display badges that have been earned */
+        }
+
+        /* Add space after the list */
+        ul {
+            margin-bottom: 20px; /* Add space after the list */
+        }
+
+        /* Back Arrow Button Styling */
+        .back-arrow {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 3.5em;
+            background-color: transparent;
+            border: none;
+            color: yellow;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .back-arrow:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <h1>Your Badges</h1>
+            <h2>Badges</h2>
+            <p>As you progress through the game, you can earn badges based on your achievements:</p>
+            <ul>
+                <li><strong>Bronze Badge 🥉:</strong> Awarded after completing all Level 1 challenges.</li>
+                <li><strong>Silver Badge 🥈:</strong> Awarded after completing all Level 2 challenges.</li>
+                <li><strong>Gold Badge 🥇:</strong> Awarded after completing all Level 3 challenges.</li>
+            </ul>
+            <p>Badges serve as a testament to your progress and achievements in the game!</p>
+            <p id="no-badges-yet">You haven't earned any badges yet. Keep playing and completing challenges to earn your first badge!</p>
+            
+            <div class="badge-container">
+                <div id="gold-badge" class="badge">🥇 Gold Badge</div>
+                <div id="silver-badge" class="badge">🥈 Silver Badge</div>
+                <div id="bronze-badge" class="badge">🥉 Bronze Badge</div>
+            </div>
+            <button class="back-arrow" onclick="location.href='index.html'">&#8592;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let badgesEarned = 0;
+
+            if (localStorage.getItem('bronzeBadge') === 'earned') {
+                document.getElementById('bronze-badge').classList.add('visible');
+                badgesEarned++;
+            }
+
+            if (localStorage.getItem('silverBadge') === 'earned') {
+                document.getElementById('silver-badge').classList.add('visible');
+                badgesEarned++;
+            }
+
+            if (localStorage.getItem('goldBadge') === 'earned') {
+                document.getElementById('gold-badge').classList.add('visible');
+                badgesEarned++;
+            }
+
+            // Hide the "no badges" message if any badges are earned
+            if (badgesEarned > 0) {
+                document.getElementById('no-badges-yet').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+

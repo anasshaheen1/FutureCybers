@@ -148,7 +148,7 @@
         <div class="container">
             <!-- Score Display -->
             <div id="score" class="score-display">Score: 0</div>
-            
+
             <h1>Challenge 10: Brute Force Attack Simulation</h1>
             <p>Try to guess the correct password within 5 attempts. The password is a common word used in brute force attacks.</p>
             <input type="text" id="password-input" placeholder="Enter your password guess...">
@@ -181,6 +181,15 @@
             <h2>Brute Force Attacks Explained</h2>
             <p>A brute force attack is a trial-and-error method used to decode sensitive data such as passwords. Attackers systematically check all possible passwords until the correct one is found.</p>
             <p>Mitigating brute force attacks involves using strong, complex passwords and implementing security measures such as rate limiting and account lockout policies.</p>
+        </div>
+    </div>
+
+    <div id="badge-popup" class="popup hidden">
+        <div class="popup-content">
+            <span id="close-badge-popup" class="close-popup">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You have earned the Silver Badge!</p> <!-- Adjust the text for each challenge -->
+            <div class="badge silver">Silver</div> <!-- Adjust the class for each badge -->
         </div>
     </div>
 

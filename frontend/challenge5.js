@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctDecryption = 'There is a secret message'; // The decrypted message
     const challenge5Unlocked = localStorage.getItem('challenge4Complete');
 
+    const badgePopup = document.getElementById('badge-popup');
+    const closeBadgePopup = document.getElementById('close-badge-popup');
+
     // Check if score exists in localStorage, if not, set it to 0
     if (!localStorage.getItem('score')) {
         localStorage.setItem('score', 0);
@@ -58,8 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreElement.innerText = `Score: ${score}`;
             } 
 
+            submitDecryptedButton.disabled = true; // Disable the submit button
+
             // Mark the current challenge as complete in localStorage
             localStorage.setItem('challenge5Complete', true);
+
+            // Award the Bronze Badge
+            localStorage.setItem('bronzeBadge', 'earned');
 
             nextChallengeButton.style.display = 'block';
             popup.style.display = 'flex'; // Show the popup with explanation
@@ -83,6 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle closing the main popup
     closePopup.addEventListener('click', () => {
         popup.style.display = 'none'; // Hide the popup
+
+        badgePopup.style.display = 'flex'; // Show the badge notification pop-up
+    });
+
+    // Handle closing the badge popup
+    closeBadgePopup.addEventListener('click', () => {
+        badgePopup.style.display = 'none'; // Hide the badge pop-up
     });
 
     // Handle the next challenge button

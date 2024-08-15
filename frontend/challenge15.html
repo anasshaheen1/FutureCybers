@@ -148,7 +148,7 @@
         <div class="container">
             <!-- Score Display -->
             <div id="score" class="score-display">Score: 0</div>
-            
+
             <h1>Challenge 15: File Upload Vulnerability</h1>
             <p>Upload a file to this system. Try to exploit the vulnerability to execute code.</p>
             <input type="file" id="file-upload" accept=".php">
@@ -180,6 +180,15 @@
             <h2>File Upload Vulnerabilities Explained</h2>
             <p>File upload vulnerabilities allow attackers to upload malicious files to a server. These files can be executed to compromise the system.</p>
             <p>To prevent such attacks, validate and sanitize file uploads, restrict file types, and ensure the upload directory is not executable.</p>
+        </div>
+    </div>
+
+    <div id="badge-popup" class="popup hidden">
+        <div class="popup-content">
+            <span id="close-badge-popup" class="close-popup">&times;</span>
+            <h2>Congratulations!</h2>
+            <p>You have earned the Gold Badge!</p> <!-- Adjust the text for each challenge -->
+            <div class="badge gold">Gold</div> <!-- Adjust the class for each badge -->
         </div>
     </div>
 

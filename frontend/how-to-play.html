@@ -22,8 +22,14 @@
             color: white; 
         }
 
+        /* Container alignment */
+        .container {
+            text-align: left; /* Ensure the entire container's text is left-aligned */
+        }
+
         /* Align text to the left */
-        .container p, .container ol, .container table {
+        .container p, .container ol, .container ul, .container table {
+            margin-left: 0; /* Ensure there's no margin that could center the text */
             text-align: left;
         }
 
@@ -92,11 +98,24 @@
                 </tr>
             </table>
             <p>Your total score will be displayed at the top left corner of the game screen. Complete all challenges to achieve the highest score!</p>
+
+            <h2>Badges</h2>
+            <p>As you progress through the game, you can earn badges based on your achievements:</p>
+            <ul>
+                <li><strong>Bronze Badge 🥉:</strong> Awarded after completing all Level 1 challenges.</li>
+                <li><strong>Silver Badge 🥈:</strong> Awarded after completing all Level 2 challenges.</li>
+                <li><strong>Gold Badge 🥇:</strong> Awarded after completing all Level 3 challenges.</li>
+            </ul>
+            <p>Badges will be displayed in the "Badges" section of the game. They serve as a testament to your progress and achievements in the game!</p>
+            
             <button class="back-arrow" onclick="location.href='index.html'">&#8592; </button>
         </div>
     </div>
 </body>
 </html>
+
+
+
 
 
 

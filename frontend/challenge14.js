@@ -61,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 scoreElement.innerText = `Score: ${score}`;
                 }
 
+                // Disable all option buttons by adding the 'disabled' class
+                options.forEach(option => {
+                    option.classList.add('disabled');
+                });
+
                 // Mark the current challenge as complete in localStorage
                 localStorage.setItem('challenge14Complete', true);
 

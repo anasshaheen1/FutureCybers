@@ -15,6 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Handle navigation to badges page
+    const viewBadgesButton = document.getElementById('view-badges');
+    if (viewBadgesButton) {
+        viewBadgesButton.addEventListener('click', () => {
+            window.location.href = 'badges.html';
+        });
+    }
+
     // Handle navigation from level selection page to specific levels
     const levelButtons = {
         level1: 'level1.html',
