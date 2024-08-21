@@ -190,6 +190,17 @@ textarea {
     opacity: 0.5; /* Dim the appearance to show it's disabled */
 }
 
+.completed {
+    background-color: green; /* or another color to indicate completion */
+    color: white;
+}
+
+.locked {
+    background-color: gray; /* or another color to indicate it's locked */
+    color: lightgray;
+    cursor: not-allowed;
+}
+
 
 /* Responsive Design Enhancements */
 @media (max-width: 768px) {

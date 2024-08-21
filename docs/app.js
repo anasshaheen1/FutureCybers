@@ -67,6 +67,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+
+    // Handle challenge buttons (for all levels) with completion and locking logic
+    const challenges = [
+        { id: 'challenge1', key: 'challenge1Complete' },
+        { id: 'challenge2', key: 'challenge2Complete' },
+        { id: 'challenge3', key: 'challenge3Complete' },
+        { id: 'challenge4', key: 'challenge4Complete' },
+        { id: 'challenge5', key: 'challenge5Complete' },
+        { id: 'challenge6', key: 'challenge6Complete' },
+        { id: 'challenge7', key: 'challenge7Complete' },
+        { id: 'challenge8', key: 'challenge8Complete' },
+        { id: 'challenge9', key: 'challenge9Complete' },
+        { id: 'challenge10', key: 'challenge10Complete' },
+        { id: 'challenge11', key: 'challenge11Complete' },
+        { id: 'challenge12', key: 'challenge12Complete' },
+        { id: 'challenge13', key: 'challenge13Complete' },
+        { id: 'challenge14', key: 'challenge14Complete' },
+        { id: 'challenge15', key: 'challenge15Complete' }
+    ];
+
+    challenges.forEach((challenge, index) => {
+        const button = document.getElementById(challenge.id);
+        if (button) {
+            const isComplete = localStorage.getItem(challenge.key);
+            if (isComplete) {
+                button.classList.add('completed');
+                button.disabled = true; // Disable completed challenges
+            } else if (index > 0 && !localStorage.getItem(challenges[index - 1].key)) {
+                button.classList.add('locked');
+                button.disabled = true; // Lock challenges if previous is not completed
+            }
+            button.addEventListener('click', () => {
+                window.location.href = `${challenge.id}.html`;
+            });
+        }
+    });
+
 });
 
 

@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
 
     const hiddenFlag = 'FLAG{hidden_information_found}'; // The correct flag
-    const challenge6Unlocked = localStorage.getItem('challenge5Complete');
 
 
     // Check if score exists in localStorage, if not, set it to 0
@@ -24,11 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
     }
 
-
-    if (!challenge6Unlocked) {
-        alert("You must complete Challenge 5 before accessing this challenge.");
-        window.location.href = 'challenge5.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge6Complete')) {

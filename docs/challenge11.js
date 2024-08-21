@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const encryptedMessage = "WIVVSRWGRFLZLLH"; // Encrypted message
     const keyword = "KEY"; // Keyword for decryption
     const correctDecryption = decryptVigenere(encryptedMessage, keyword); // The correct decrypted message
-    const challenge11Unlocked = localStorage.getItem('challenge10Complete');
 
 
     // Check if score exists in localStorage, if not, set it to 0
@@ -28,11 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
-    if (!challenge11Unlocked) {
-        alert("You must complete Challenge 10 before accessing this challenge.");
-        window.location.href = 'challenge10.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge11Complete')) {

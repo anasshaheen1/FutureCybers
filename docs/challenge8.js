@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
     const xssOutput = document.getElementById('xss-output'); // The div to output the script
-    const challenge8Unlocked = localStorage.getItem('challenge7Complete');
 
 
     // Check if score exists in localStorage, if not, set it to 0
@@ -24,10 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    if (!challenge8Unlocked) {
-        alert("You must complete Challenge 7 before accessing this challenge.");
-        window.location.href = 'challenge7.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge8Complete')) {

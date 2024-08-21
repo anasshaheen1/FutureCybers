@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHint = document.getElementById('close-hint');
 
     const correctPassword = 'password'; // The password corresponding to the MD5 hash
-    const challenge9Unlocked = localStorage.getItem('challenge8Complete');
 
 
     // Check if score exists in localStorage, if not, set it to 0
@@ -22,13 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const scoreElement = document.getElementById('score');
     if (scoreElement) {
         scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
-    }
-
-
-
-    if (!challenge9Unlocked) {
-        alert("You must complete Challenge 8 before accessing this challenge.");
-        window.location.href = 'challenge8.html'; // Redirect back to the previous challenge
     }
 
     // Check if the challenge has already been completed

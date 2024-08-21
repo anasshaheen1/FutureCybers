@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const correctPassword = '123456'; // The correct password to guess
     let attemptsRemaining = 5;
 
-    const challenge10Unlocked = localStorage.getItem('challenge9Complete');
 
     const badgePopup = document.getElementById('badge-popup');
     const closeBadgePopup = document.getElementById('close-badge-popup');
@@ -29,11 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
     }
 
-
-    if (!challenge10Unlocked) {
-        alert("You must complete Challenge 9 before accessing this challenge.");
-        window.location.href = 'challenge9.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge10Complete')) {

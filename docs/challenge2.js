@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const hintButton = document.getElementById('hint-button');
     const hintPopup = document.getElementById('hint-popup');
     const closeHint = document.getElementById('close-hint');
-    const challenge2Unlocked = localStorage.getItem('challenge1Complete');
 
     // Check if score exists in localStorage, if not, set it to 0
     if (!localStorage.getItem('score')) {
@@ -21,11 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
     }
 
-
-    if (!challenge2Unlocked) {
-        alert("You must complete Challenge 1 before accessing this challenge.");
-        window.location.href = 'challenge1.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge2Complete')) {

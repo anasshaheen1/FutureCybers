@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeHintButton = document.getElementById('close-hint');
 
     const correctDecryption = 'There is a secret message'; // The decrypted message
-    const challenge5Unlocked = localStorage.getItem('challenge4Complete');
 
     const badgePopup = document.getElementById('badge-popup');
     const closeBadgePopup = document.getElementById('close-badge-popup');
@@ -27,11 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         scoreElement.innerText = `Score: ${localStorage.getItem('score')}`;
     }
 
-
-    if (!challenge5Unlocked) {
-        alert("You must complete Challenge 4 before accessing this challenge.");
-        window.location.href = 'challenge4.html'; // Redirect back to the previous challenge
-    }
 
     // Check if the challenge has already been completed
     if (localStorage.getItem('challenge5Complete')) {
