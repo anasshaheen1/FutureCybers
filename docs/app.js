@@ -93,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const isComplete = localStorage.getItem(challenge.key);
             if (isComplete) {
                 button.classList.add('completed');
-                button.disabled = true; // Disable completed challenges
             } else if (index > 0 && !localStorage.getItem(challenges[index - 1].key)) {
                 button.classList.add('locked');
                 button.disabled = true; // Lock challenges if previous is not completed
