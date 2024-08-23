@@ -201,6 +201,19 @@ textarea {
     cursor: not-allowed;
 }
 
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Mono', monospace;
+}
+
+button, input, textarea {
+    font-family: 'Roboto Mono', monospace;
+}
+
+
 
 /* Responsive Design Enhancements */
 @media (max-width: 768px) {
